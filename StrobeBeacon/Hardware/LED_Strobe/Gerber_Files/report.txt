@@ -1,0 +1,14 @@
+Info: Front side (top side) place file: “C:\Users\steve\Documents\KiCAD\LED_Strobe\LED_Strobe-top.pos”.
+Info: Component count: 3.
+Info: Back side (bottom side) place file: “C:\Users\steve\Documents\KiCAD\LED_Strobe\LED_Strobe-bottom.pos”.
+Info: Component count: 0.
+Info: Full component count: 3
+
+Component Placement File generation OK.
+Info: Front side (top side) place file: “C:\Users\steve\Documents\KiCAD\LED_Strobe\LED_Strobe-top.pos”.
+Info: Component count: 3.
+Info: Back side (bottom side) place file: “C:\Users\steve\Documents\KiCAD\LED_Strobe\LED_Strobe-bottom.pos”.
+Info: Component count: 0.
+Info: Full component count: 3
+
+Component Placement File generation OK.

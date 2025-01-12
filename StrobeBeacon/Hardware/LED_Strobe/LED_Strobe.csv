@@ -1,0 +1,10 @@
+"Id";"Designator";"Package";"Quantity";"Designation";"Supplier and ref";
+1;"R3,R2";"R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical";2;"330";;;
+2;"R1";"R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical";1;"220";;;
+3;"J1";"PinHeader_2x04_P2.54mm_Vertical";1;"ICP";;;
+4;"J2";"PinHeader_1x02_P2.54mm_Vertical";1;"BLUE";;;
+5;"JP1";"SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm";1;"MOD1";;;
+6;"JP2";"SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm";1;"MOD2";;;
+7;"U1";"DIP-8_W7.62mm";1;"PIC12F1822-IMC";;;
+8;"D2";"LED_D3.0mm";1;"RED";;;
+9;"D1";"LED_D3.0mm_Clear";1;"WHITE";;;

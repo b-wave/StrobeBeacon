@@ -1,0 +1,25 @@
+Drill report for C:\Users\steve\Documents\KiCAD\LED_Strobe\LED_Strobe.kicad_pcb
+Created on 2/14/2023 3:39:43 PM
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  B.Cu                      back
+
+
+Drill file 'LED_Strobe-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.40mm  0.016"  (2 holes)
+    T2  0.80mm  0.031"  (8 holes)
+    T3  0.90mm  0.035"  (4 holes)
+    T4  1.00mm  0.039"  (10 holes)
+
+    Total plated holes count 24
+
+
+Drill file 'LED_Strobe-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+
+    Total unplated holes count 0
