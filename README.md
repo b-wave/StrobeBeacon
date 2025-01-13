@@ -13,7 +13,10 @@ The firmware is included in the folder. It is a C source file that was compiled 
 The hardware was developed using KiCAD version 8.0.  
 ![](https://github.com/b-wave/StrobeBeacon/blob/main/StrobeBeacon/Resources/StrobeBeaconSchematic.jpg)
 
-This is a simple circuit board. All the Gerber files are included, but you can order directly from this project file on OSH Park.com: https://644db4de5c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rcdn.com/0ba974dadc37eb3494fbccaf378a86d.kicad_pcb
+This is a simple circuit board. All the Gerber files are included, but you can order directly from this project file on OSH Park.com: 
+
+https://oshpark.com/shared_projects/jd6ww6b6
+
 
 
 
