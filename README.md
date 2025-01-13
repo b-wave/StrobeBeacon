@@ -40,53 +40,81 @@ byte GetPWM(byte pin)
 }
 ```
 
-But for a PIC microcontroller it is a little more involved.  We have to use timers and interrrupts.  The CCP1 interrupt can be used to detect the edge. Then the width is timed. Here is an example:
-```asm
-////////////////////////////////////////////////////////////////////////////////
- void interrupt() {
+But for a PIC microcontroller it is a little more involved.  We have to use timers and interrrupts.  The CCP1 interrupt can be used to detect the edge. Then the width is timed. 
 
- if(INTCON.F2 == 1) // If Timer 0 interrupt
-	{
-	INTCON.F2 = 0; // Reset TOIE
+*Copilot PROMPT: Give an example of pic12f1822 to measure a PWM input*
 
-	} // END if Timer 0 interrupt
+To measure a PWM input using the PIC12F1822 microcontroller, you can use the Capture/Compare/PWM (CCP) module. Here's a basic example of how you can set it up:
 
-	if(PIR1.F2 == 1) // if CCP1 Edge Detected (CCP1 Interrupt)
-	{
+1.Configure the CCP module: Set the CCP module to capture mode to measure the PWM input signal.
 
-	PIR1.F2 = 0; // Reset CCP1IE
+2. Configure the Timer: Use Timer1 to capture the PWM signal's period and duty cycle.
 
-	if(CCP1CON.F0 == 1) // if Rising Edge detected
-	{
-	Leading = CCPR1L| CCPR1H<<8; // Copy CCPR1 to Leading Edge var
-	CCP1CON.F0 = 0; // Set to falling edge
-	} // END Rising Edge
+3. Capture the PWM signal: Use the CCP module to capture the rising and falling edges of the PWM signal.
 
-	else if(CCP1CON.F0 == 0) // If Falling Edge Detected
-	{
-	Capture = CCPR1L | CCPR1H<<8; // Copy CCPR1 to Falling Edge var
-	Capture = Capture - Leading ; // Calculate Pulse Width
-	CCP1CON.F0 = 1; // Set to Traling edge
-	}// END Falling Edge
+Here's a simple code example using MPLAB X IDE and XC8 compiler:
+```C
+#include <xc.h>
 
-	}// END CCP1 Interrupt
+// Configuration bits
+#pragma config FOSC = INTOSC    // Oscillator Selection
+#pragma config WDTE = OFF       // Watchdog Timer Enable
+#pragma config PWRTE = OFF      // Power-up Timer Enable
+#pragma config MCLRE = ON       // MCLR Pin Function Select
+#pragma config CP = OFF         // Flash Program Memory Code Protection
+#pragma config BOREN = ON       // Brown-out Reset Enable
+#pragma config CLKOUTEN = OFF   // Clock Out Enable
+#pragma config IESO = ON        // Internal/External Switchover Mode
+#pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enable
 
+void main(void) {
+    // Initialize the oscillator
+    OSCCON = 0x70; // Set internal oscillator to 8MHz
 
-}//interrupt
+    // Configure CCP1 module for capture mode
+    CCP1CON = 0x05; // Capture mode, every rising edge
+
+    // Configure Timer1
+    T1CON = 0x31; // Timer1 on, prescaler 1:8
+
+    // Enable CCP1 interrupt
+    PIE1bits.CCP1IE = 1;
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+
+    while (1) {
+        // Main loop
+    }
+}
+
+// CCP1 interrupt service routine
+void __interrupt() CCP1_ISR(void) {
+    if (PIR1bits.CCP1IF) {
+        // Capture the PWM signal period and duty cycle
+        unsigned int captureValue = CCPR1;
+        PIR1bits.CCP1IF = 0; // Clear the interrupt flag
+    }
+}
+
 ```
+This code sets up the PIC12F1822 to capture the rising edges of a PWM signal using the CCP1 module and Timer1. You can modify the code to capture both rising and falling edges to measure the duty cycle accurately.
+
+For more details, you can refer to the PIC12F1822 datasheet.
 We could also use ranges of PWM to select different modes. 
 
 ```C
-void loop()
-byte mode
-{
-  byte PWM = GetPWM(PWMPin);
-    if (PWM < 50) mode = 0;  //OFF
-     else if (PWM >= 50 && PWM <= 90) mode = 1; //  Beacon/Strobe
-       else if (PWM > 90) mode = 2; //Strobe/strobe
-...
-}
+While (1) {
+//main loop
 
+byte mode
+	{
+ 	 byte PWM = GetPWM(PWMPin);
+   		 if (PWM < 50) mode = 0;  //OFF
+     			else if (PWM >= 50 && PWM <= 90) mode = 1; //  Beacon/Strobe
+     			  else if (PWM > 90) mode = 2; //Strobe/strobe
+//... then use the mode byte to control the strobes  the get PWM probabily should be done in the long ( off)  time outs.
+	}
+}
 
 
 ```
