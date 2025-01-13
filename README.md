@@ -46,10 +46,8 @@ But for a PIC microcontroller it is a little more involved.  We have to use time
 
 To measure a PWM input using the PIC12F1822 microcontroller, you can use the Capture/Compare/PWM (CCP) module. Here's a basic example of how you can set it up:
 
-1.Configure the CCP module: Set the CCP module to capture mode to measure the PWM input signal.
-
+1. Configure the CCP module: Set the CCP module to capture mode to measure the PWM input signal.
 2. Configure the Timer: Use Timer1 to capture the PWM signal's period and duty cycle.
-
 3. Capture the PWM signal: Use the CCP module to capture the rising and falling edges of the PWM signal.
 
 Here's a simple code example using MPLAB X IDE and XC8 compiler:
