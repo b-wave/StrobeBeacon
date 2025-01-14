@@ -103,13 +103,14 @@ We could also use ranges of PWM to select different modes.
 ```C
 While (1) {
 //main loop
+//Note: this assumes the pulse width numbers are predefined
 
 byte mode
 	{
  	 byte PWM = GetPWM(PWMPin);
-   		 if (PWM < 50) mode = 0;  //OFF
-     			else if (PWM >= 50 && PWM <= 90) mode = 1; //  Beacon/Strobe
-     			  else if (PWM > 90) mode = 2; //Strobe/strobe
+   		 if (PWM < LOWPULSE_WIDTH) mode = 0;  //OFF
+     			else if (PWM >=  LOWPULSE_WIDTH && PWM <=  LONGPULSE_WIDTH) mode = 1; //  Beacon/Strobe
+     			  else if (PWM > LONGPULSE_WIDTTH) mode = 2; //Strobe/strobe
 //... then use the mode byte to control the strobes  the get PWM probabily should be done in the long ( off)  time outs.
 	}
 }
