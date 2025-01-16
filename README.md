@@ -79,9 +79,17 @@ void main(void) {
     PIE1bits.CCP1IE = 1;
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
-
+/*
+Example of a channel used to control the Strobes 
+Strobe AUX (CH8):
+            Low     High      PWM%
+power on    0       0         0%
+switch off  995uS   18882uS   5%
+switch on   1988uS  17888uS   10%
+*/
     while (1) {
         // Main loop
+
     }
 }
 
